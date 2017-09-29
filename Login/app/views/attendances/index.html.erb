@@ -1,0 +1,46 @@
+<h1>Add yourself</h1>
+
+<%  %>
+
+<%= form_for(@attendance) do |f| %>
+  <ul>
+  <% @attendance.errors.full_messages.each do |error| %>
+    <li><%= error %></li>
+  <% end %>
+  </ul>
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
+
+
+<h1>All People</h1>
+
+<ul id="attendances">
+  <% @attendances.each do |attendance| %>
+    <li>
+      <%= attendance.name %>
+      <td><%= link_to '| I\'m leaving the space', attendance_path(attendance),
+              method: :delete,
+              data: { confirm: 'Are you sure?' } %></td>
+    </li>
+  <% end %>
+</ul>
+
+<h1>Changelog</h1>
+<p> Yes this part is hardcoded im too lazy to change </p>
+<br>
+
+<!-- Make changelog bottom up, most recent top -->
+
+
+<h3> v0.1 "" Initial Release </h3>
+  <ul>
+    <li>Currently works on an honesty system. you can add any name or delete any name</li>
+    <li>Known Issue: Does not refresh after adding an item or deleting an item</li>
+    <li>Not automated yet, people will stay in attendance until someone deletes them</li>
+  </ul>
